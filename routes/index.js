@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-var express = require('express');
+/*var express = require('express');
 var app = express();
 
 
@@ -45,3 +45,4 @@ app.post('/pushData', function(req, res){
 	res.end();
 
 	});
+*/
