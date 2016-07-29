@@ -1,1 +1,1 @@
-web: node index.jade
+web: node index.js
