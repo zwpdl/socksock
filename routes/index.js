@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-/*var express = require('express');
+var express = require('express');
 var app = express();
 
 
@@ -13,7 +13,7 @@ exports.index = function(req, res){
 
 
 
-app.post('/pushData', function(req, res){
+/*app.post('/pushData', function(req, res){
 
 	var chunk = '';
 
