@@ -13,6 +13,9 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
+app.listen(process.env.PORT || 8080, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
