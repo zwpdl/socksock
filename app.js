@@ -68,7 +68,7 @@ app.post('/pushData', function(req, res){
 
 	// result String으로 바뀝니다.
 
-	res.write("OK");
+	res.write("동규야 축하한다");
 
 	res.end();
 	});
