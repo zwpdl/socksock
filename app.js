@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-app.get('/', function(request, response) {
+app.get('/', function(req, res) {
   
   var chunk = '';
 
@@ -56,7 +56,7 @@ app.post('/pushData', function(req, res){
 
 	//파싱된 데이터를 확인합니다.
 
-	//console.log("name : "+chunk.name + " , phone : "+chunk.phone);
+	console.log("name : "+chunk.name + " , phone : "+chunk.phone);
 
 		response.send("name : "+chunk.name + " , phone : "+chunk.phone);
 		
@@ -71,7 +71,6 @@ app.post('/pushData', function(req, res){
 	res.write("OK");
 
 	res.end();
-	response.send('Hello World!');
 	});
 
 
