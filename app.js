@@ -1,8 +1,17 @@
 var express = require('express');
+var mongoose = require('mongoose');
 
 var app = express.createServer(express.logger());
 
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds161475.mlab.com:61475/heroku_9xdrbk8n');
 
+mongoose.model('member_info',{name: String});
+
+app.get('/member_info', function(req, res) {
+	mongoose.model('member_info').find(function(err, member_info) {
+		res.send(member_info);
+	});
+});
 
 app.get('/', function(req, res) {
   
