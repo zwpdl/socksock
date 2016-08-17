@@ -1,26 +1,7 @@
 var express = require('express');
-/*var mongoose = require('mongoose');*/
 
 var app = express.createServer(express.logger());
-/*
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds161475.mlab.com:61475/heroku_9xdrbk8n');
 
-mongoose.model('member_info',{name: String},{author: String});
-
-
-
-app.get('/users',function(req, res){
-	
-	mongoose.model('member_info').find(function(err, users) {
-		res.write("하하하하");
-		res.end();
-	});
-	
-	res.write("하하하하");
-	res.end();
-});
-
-*/
 
 
 app.get('/', function(req, res) {
@@ -41,10 +22,7 @@ app.get('/', function(req, res) {
 
 	//파싱된 데이터를 확인합니다.
 
-	//console.log("name : "+chunk.name + " , phone : "+chunk.phone);
-
-		res.send("OK");
-		
+	console.log("name : "+chunk.name + " , phone : "+chunk.phone);
 		
 	});
 
@@ -81,7 +59,7 @@ app.post('/pushData', function(req, res){
 
 	console.log("name : "+chunk.name + " , phone : "+chunk.phone);
 
-		response.send("name : "+chunk.name + " , phone : "+chunk.phone);
+		res.send("name : "+chunk.name + " , phone : "+chunk.phone);
 		
 		
 	});
