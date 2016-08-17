@@ -36,7 +36,7 @@ app.get('/', function(req, res) {
 	chunk = JSON.parse(data);
 
 	});
-
+/*
 	req.on('end',function(){
 
 	//파싱된 데이터를 확인합니다.
@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 		
 		
 	});
-
+*/
 
 	// 아래의 OK라는 내용이 안드로이드의 ReadBuffer를 통해
 
