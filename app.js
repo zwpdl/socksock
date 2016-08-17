@@ -9,7 +9,8 @@ mongoose.model('member_info',{name: String});
 
 app.get('/member_info', function(req, res) {
 	mongoose.model('member_info').find(function(err, member_info) {
-		res.send(member_info);
+		res.write("성공이닷!");
+		res.end();
 	});
 });
 
