@@ -1,8 +1,8 @@
 var express = require('express');
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');*/
 
 var app = express.createServer(express.logger());
-
+/*
 mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds161475.mlab.com:61475/heroku_9xdrbk8n');
 
 mongoose.model('member_info',{name: String},{author: String});
@@ -11,16 +11,16 @@ mongoose.model('member_info',{name: String},{author: String});
 
 app.get('/users',function(req, res){
 	
-	/*mongoose.model('member_info').find(function(err, users) {
+	mongoose.model('member_info').find(function(err, users) {
 		res.write("하하하하");
 		res.end();
-	});*/
+	});
 	
 	res.write("하하하하");
 	res.end();
 });
 
-
+*/
 
 
 app.get('/', function(req, res) {
