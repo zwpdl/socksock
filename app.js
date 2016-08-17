@@ -57,9 +57,9 @@ app.post('/pushData', function(req, res){
 
 	//파싱된 데이터를 확인합니다.
 
-	console.log("name : "+chunk.name + " , phone : "+chunk.phone);
+	//console.log("name : "+chunk.name + " , phone : "+chunk.phone);
 
-		res.send("name : "+chunk.name + " , phone : "+chunk.phone);
+	//	res.send("name : "+chunk.name + " , phone : "+chunk.phone);
 		
 		
 	});
