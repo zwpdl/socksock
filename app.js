@@ -43,7 +43,7 @@ app.get('/', function(req, res) {
 
 	//console.log("name : "+chunk.name + " , phone : "+chunk.phone);
 
-		response.send("OK");
+		res.send("OK");
 		
 		
 	});
