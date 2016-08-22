@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var http = require ('http');  
 
 
-var app = express.createServer(express.logger());
+var app = express();
 
 
 var uristring =
