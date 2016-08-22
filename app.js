@@ -21,10 +21,12 @@ mongoose.connect(uristring, function (err, res) {
     }
   });
 
+
 var userSchema = new mongoose.Schema({
     name: String,
     author: String
   });
+
 
 var PUser = mongoose.model('member_info', userSchema);
 
@@ -35,10 +37,26 @@ var johndoe = new PUser ({
 
 
 
+
+/*
 johndoe.save(function (err) {
 	if (err) console.log ('Error on save!');
-	});
+	});*/
 
+
+	PUser.find(function(err, docs) {
+	
+	console.log(docs);
+	
+	for(var i=0, size=docs.length; i<size; i++) {
+
+		var name = docs[i].name;
+
+		console.log(name);
+
+	}
+	
+});
 
 
 
