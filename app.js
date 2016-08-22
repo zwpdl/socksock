@@ -1,11 +1,40 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var http = require ('http');  
+
 
 var app = express.createServer(express.logger());
 
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds161475.mlab.com:61475/heroku_9xdrbk8n');
 
-mongoose.model('member_info',{name: String});
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://<dbuser>:<dbpassword>@ds161475.mlab.com:61475/heroku_9xdrbk8n';
+
+var theport = process.env.PORT || 5000;
+
+mongoose.connect(uristring, function (err, res) {
+    if (err) {
+    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+    } else {
+    console.log ('Succeeded connected to: ' + uristring);
+    }
+  });
+
+var userSchema = new mongoose.Schema({
+    name: String,
+    author: String
+  });
+
+var PUser = mongoose.model('member_info', userSchema);
+
+var johndoe = new PUser ({
+    name: '최동규',
+    author: 'choidongkyu'
+  });
+
+johndoe.save(function (err) {if (err) console.log ('Error on save!')});
+
 
 app.get('/member_info', function(req, res) {
 	mongoose.model('member_info').find(function(err, member_info) {
