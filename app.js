@@ -9,7 +9,7 @@ var app = express();
 var uristring =
     process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
-    'mongodb://<dbuser>:<dbpassword>@ds161475.mlab.com:61475/heroku_9xdrbk8n';
+    'mongodb://dongkyu:88268826@ds161475.mlab.com:61475/heroku_9xdrbk8n';
 
 var theport = process.env.PORT || 5000;
 
