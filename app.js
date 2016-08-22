@@ -33,7 +33,7 @@ var johndoe = new PUser ({
     author: 'choidongkyu'
   });
 
-johndoe.save(function (err) {if (err) console.log ('Error on save!')});
+
 
 
 app.get('/member_info', function(req, res) {
@@ -79,6 +79,10 @@ app.get('/', function(req, res) {
 
 
 app.post('/pushData', function(req, res){
+	
+	johndoe.save(function (err) {
+		if (err) console.log ('Error on save!');
+		});
 
 	var chunk = '';
 
