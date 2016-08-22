@@ -35,6 +35,12 @@ var johndoe = new PUser ({
 
 
 
+johndoe.save(function (err) {
+	if (err) console.log ('Error on save!');
+	});
+
+
+
 
 app.get('/member_info', function(req, res) {
 	mongoose.model('member_info').find(function(err, member_info) {
@@ -42,6 +48,9 @@ app.get('/member_info', function(req, res) {
 		res.end();
 	});
 });
+
+
+
 
 app.get('/', function(req, res) {
   
@@ -80,9 +89,7 @@ app.get('/', function(req, res) {
 
 app.post('/pushData', function(req, res){
 	
-	johndoe.save(function (err) {
-		if (err) console.log ('Error on save!');
-		});
+
 
 	var chunk = '';
 
