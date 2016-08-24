@@ -37,28 +37,25 @@ var johndoe = new PUser ({
 
 
 app.post('/member_insert', function(req, res) {
-	var chunk="";
+	var responseData = '';
+
 	
-	req.on('data', function(data){
-
-		//데이터를 JSON으로 파싱합니다.
-
-		chunk = JSON.parse(data);
-
-		});
+	response.on('data', function (chunk) {
+	    responseData += chunk;
+	  });
 
 
 		req.on('end',function(){
 
 		//파싱된 데이터를 확인합니다.
 
-
-			res.send("name : "+chunk.name + " , author : "+chunk.author);
+			var dataObj = JSON.parse(responseData);
+			res.send("name : "+dataObj.name + " , phone : "+dataObj.phone);
 			
 			
 		});
 	
-	res.write("동규야 축하한다"+chunk.name+"//"+chunk.author);
+	res.write("동규야 축하한다"+dataObj.name);
 	res.end();
 });
 
