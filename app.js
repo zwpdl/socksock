@@ -35,7 +35,21 @@ var johndoe = new PUser ({
     author: 'choidongkyu'
   });
 
-
+var chunk = '';
+app.get('/member_insert', function(req, res) {
+	
+	req.on('data', function(data){
+		//데이터를 JSON으로 파싱합니다.
+		
+		chunk = JSON.parse(data);
+		johndoe.name = chunk.name;
+		johndoe.author = chunk.author;
+		
+		johndoe.save();
+		
+		});
+	
+});
 
 
 /*
