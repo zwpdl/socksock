@@ -50,7 +50,7 @@ app.post('/member_insert', function(req, res) {
 		});
 	
 	res.write("동규야 축하한다"+chunk.name+"//"+chunk.author);
-	
+	res.end();
 });
 
 
