@@ -45,9 +45,11 @@ app.post('/member_insert', function(req, res) {
 		johndoe.name = chunk.name;
 		johndoe.author = chunk.author;
 		
-		res.write("동규야 축하한다"+chunk.name+"//"+chunk.author);
+		
 		
 		});
+	
+	res.write("동규야 축하한다"+chunk.name+"//"+chunk.author);
 	
 });
 
