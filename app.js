@@ -38,6 +38,7 @@ var johndoe = new PUser ({
 
 app.post('/member_insert', function(req, res) {
 		var jsonData = "";
+		var id_exist = false;
 	 
 		req.on('data', function (chunk) {
 			jsonData += chunk;
@@ -45,21 +46,27 @@ app.post('/member_insert', function(req, res) {
 	 
 		req.on('end', function () {
 		var reqObj = JSON.parse(jsonData);
-		var resObj = {
-				name: "Hello " + reqObj.response.email,
-				phone: "Are you a good " + reqObj.response.age + "?"};
+	
+		PUser.findOne({'name':reqObj.response.email},function(err,result){
+		if(err){
+			console.err(err);
+			throw err;}
+		if(!result.isempty){
+			id_exist = true;}
+		});
 		
-		var jo = new PUser({
+		if(id_exist === true){
+			var jo = new PUser({
 			name : ""+reqObj.response.email,
 			author : ""+reqObj.response.age
-		});
+				});
 		
-		jo.save(function (err) {
-			if (err) console.log ('Error on save!');
-		});
-		
+				jo.save(function (err) {
+					if (err) console.log ('Error on save!');
+					});
+				}
 		res.writeHead(200);
-		res.end(JSON.stringify(resObj));
+		res.end();
 		});
 		
 		
