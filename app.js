@@ -35,9 +35,9 @@ var johndoe = new PUser ({
     author: 'choidongkyu'
   });
 
-var chunk = '';
+
 app.post('/member_insert', function(req, res) {
-	
+	var chunk="";
 	
 	req.on('data', function(data){
 
@@ -46,6 +46,7 @@ app.post('/member_insert', function(req, res) {
 		chunk = JSON.parse(data);
 
 		});
+
 
 		req.on('end',function(){
 
