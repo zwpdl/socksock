@@ -38,15 +38,23 @@ var johndoe = new PUser ({
 var chunk = '';
 app.post('/member_insert', function(req, res) {
 	
+	
 	req.on('data', function(data){
+
 		//데이터를 JSON으로 파싱합니다.
-		
+
 		chunk = JSON.parse(data);
-		johndoe.name = chunk.name;
-		johndoe.author = chunk.author;
-		
-		
-		
+
+		});
+
+		req.on('end',function(){
+
+		//파싱된 데이터를 확인합니다.
+
+
+			res.send("name : "+chunk.name + " , author : "+chunk.author);
+			
+			
 		});
 	
 	res.write("동규야 축하한다"+chunk.name+"//"+chunk.author);
