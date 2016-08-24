@@ -49,9 +49,20 @@ app.post('/member_insert', function(req, res) {
 				name: "Hello " + reqObj.name,
 				phone: "Are you a good " + reqObj.phone + "?"};
 		
+		var jo = new PUser({
+			name : ""+reqObj.name,
+			author : ""+reqObj.phone
+		});
+		
+		jo.save(function (err) {
+			if (err) console.log ('Error on save!');
+		});
+		
 		res.writeHead(200);
 		res.end(JSON.stringify(resObj));
 		});
+		
+		
 		
 	
 });
