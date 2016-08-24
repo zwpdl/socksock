@@ -36,7 +36,7 @@ var johndoe = new PUser ({
   });
 
 var chunk = '';
-app.get('/member_insert', function(req, res) {
+app.post('/member_insert', function(req, res) {
 	
 	req.on('data', function(data){
 		//데이터를 JSON으로 파싱합니다.
@@ -45,7 +45,7 @@ app.get('/member_insert', function(req, res) {
 		johndoe.name = chunk.name;
 		johndoe.author = chunk.author;
 		
-		johndoe.save();
+		res.write("동규야 축하한다"+chunk.name+"//"+chunk.author);
 		
 		});
 	
