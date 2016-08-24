@@ -40,9 +40,10 @@ app.post('/member_insert', function(req, res) {
 	var responseData = '';
 
 	
-	response.on('data', function (chunk) {
-	    responseData += chunk;
-	  });
+	req.on('data', function (data) {
+		
+		responseData += data;
+	});
 
 
 		req.on('end',function(){
