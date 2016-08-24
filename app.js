@@ -46,7 +46,7 @@ app.post('/member_insert', function(req, res) {
 	});
 
 
-		res.on('end',function(){
+		req.on('end',function(){
 
 		//파싱된 데이터를 확인합니다.
 
