@@ -46,12 +46,12 @@ app.post('/member_insert', function(req, res) {
 		req.on('end', function () {
 		var reqObj = JSON.parse(jsonData);
 		var resObj = {
-				name: "Hello " + reqObj.name,
-				phone: "Are you a good " + reqObj.phone + "?"};
+				name: "Hello " + reqObj.email,
+				phone: "Are you a good " + reqObj.age + "?"};
 		
 		var jo = new PUser({
-			name : ""+reqObj.name,
-			author : ""+reqObj.phone
+			name : ""+reqObj.email,
+			author : ""+reqObj.age
 		});
 		
 		jo.save(function (err) {
