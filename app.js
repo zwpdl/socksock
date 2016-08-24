@@ -39,6 +39,7 @@ var johndoe = new PUser ({
 app.post('/member_insert', function(req, res) {
 		var jsonData = "";
 		var id_exist = false;
+		var feedback = "";
 	 
 		req.on('data', function (chunk) {
 			jsonData += chunk;
@@ -52,7 +53,8 @@ app.post('/member_insert', function(req, res) {
 			console.err(err);
 			throw err;}
 		if(!result.isempty){
-			id_exist = true;}
+			id_exist = true;
+			feedback = "회원 정보 저장";}
 		});
 		
 		if(id_exist === true){
@@ -64,9 +66,13 @@ app.post('/member_insert', function(req, res) {
 				jo.save(function (err) {
 					if (err) console.log ('Error on save!');
 					});
+				}else{
+					feedback = "기존 회원임";
 				}
+		
+		
 		res.writeHead(200);
-		res.end();
+		res.end(feedback);
 		});
 		
 		
