@@ -35,6 +35,31 @@ var johndoe = new PUser ({
     author: 'choidongkyu'
   });
 
+function randomString() {
+var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+var string_length = 15;
+var randomstring = '';
+for (var i=0; i<string_length; i++) {
+var rnum = Math.floor(Math.random() * chars.length);
+randomstring += chars.substring(rnum,rnum+1);
+}
+return randomstring;
+}
+
+app.post('/making_payload', function(req, res) {
+	
+	var payload = randomString();
+	
+	res.writeHead(200);
+	res.end(payload);
+	
+	
+});
+
+
+
+
+
 
 app.post('/member_insert', function(req, res) {
 		var jsonData = "";
@@ -69,15 +94,9 @@ app.post('/member_insert', function(req, res) {
 				}else{
 					feedback = "기존 회원임";
 				}
-		
-		
 		res.writeHead(200);
 		res.end(feedback);
 		});
-		
-		
-		
-	
 });
 
 
