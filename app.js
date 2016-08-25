@@ -50,12 +50,45 @@ app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
 	
+	
 	res.writeHead(200);
 	res.end(payload);
 	
 	
 });
 
+app.post('/comparing_payload', function(req, res) {
+	var jsonData = "";
+	var comparing_payload = false;
+	var feedback = "";
+ 
+	req.on('data', function (chunk) {
+		jsonData += chunk;
+	});
+ 
+	req.on('end', function () {
+	var reqObj = JSON.parse(jsonData);
+
+	PUser.findOne({'payload':reqObj.developerPayload},function(err,result){
+	if(err){
+		console.err(err);
+		throw err;}
+	
+	if(!result.isempty){
+		comparing_payload = true;
+	}else{
+		comparing_payload = false;
+	}
+	});
+	// ------------- db payload 가져와서 비교하기 -----------------
+	
+
+	res.writeHead(200);
+	res.end(comparing_payload);
+	});
+	
+	
+});
 
 
 
@@ -95,7 +128,7 @@ app.post('/member_insert', function(req, res) {
 					feedback = "기존 회원임";
 				}
 		res.writeHead(200);
-		res.end(feedback);
+		res.end(reqObj.response.email);
 		});
 });
 
