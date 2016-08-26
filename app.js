@@ -123,8 +123,8 @@ app.post('/member_insert', function(req, res) {
 		
 		});
 		
-		res.write(email);
-		res.end();
+		res.writeHead(200);
+		res.end("성공");
 });
 
 
