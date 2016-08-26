@@ -153,7 +153,7 @@ app.post('/making_payload', function(req, res) {
 	var reqObj = JSON.parse(jsonData);
 	var email = reqObj.email;
 
-	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
+//	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
 
 	res.writeHead(200);
 	res.end(payload);
