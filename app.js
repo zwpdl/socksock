@@ -81,7 +81,7 @@ app.post('/member_insert', function(req, res) {
 					feedback = "기존 회원임";
 				}
 		res.writeHead(200);
-		res.end(feedback);
+		res.end(reqObj.response.email);
 		});
 });
 
