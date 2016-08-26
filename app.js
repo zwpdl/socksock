@@ -94,16 +94,16 @@ app.post('/member_insert', function(req, res) {
 		req.on('end', function () {
 		var reqObj = JSON.parse(jsonData);
 	
-		PUser.findOne({'email':reqObj.response.email},function(err,result){
+/*		PUser.findOne({'email':reqObj.response.email},function(err,result){
 		if(err){
 			console.err(err);
 			throw err;}
 		if(!result.isempty){
 			id_exist = true;}
-		});
+		});*/
 		
 		
-		if(id_exist === true){
+	//	if(id_exist === true){
 			var jo = new PUser({
 			email : ""+reqObj.response.email,
 			age : ""+reqObj.response.age,
@@ -117,8 +117,8 @@ app.post('/member_insert', function(req, res) {
 				jo.save(function (err) {
 					if (err) console.log ('Error on save!');
 					});
-				}else{
-				}
+				//}else{
+				//Z}
 		res.writeHead(200);
 		res.end(reqObj.response.email);
 		});
