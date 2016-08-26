@@ -43,15 +43,14 @@ var johndoe = new PUser ({
 	product: "2"
   });
 
-/*johndoe.save(function (err) {
+johndoe.save(function (err) {
 	if (err) console.log ('Error on save!');
-});*/
+});
 
 //네이버 로그인 시 회원 정보 저장
 app.post('/member_insert', function(req, res) {
 		var jsonData = "";
 		var id_exist = false;
-		var feedback = "";
 	 
 		req.on('data', function (chunk) {
 			jsonData += chunk;
@@ -65,8 +64,7 @@ app.post('/member_insert', function(req, res) {
 			console.err(err);
 			throw err;}
 		if(!result.isempty){
-			id_exist = true;
-			feedback = "회원 정보 저장";}
+			id_exist = true;}
 		});
 		
 		
@@ -85,7 +83,6 @@ app.post('/member_insert', function(req, res) {
 					if (err) console.log ('Error on save!');
 					});
 				}else{
-					feedback = "기존 회원임";
 				}
 		res.writeHead(200);
 		res.end(reqObj.response.email);
