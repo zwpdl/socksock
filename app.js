@@ -123,8 +123,8 @@ app.post('/member_insert', function(req, res) {
 		
 		});
 		
-		res.writeHead(200);
-		res.end(email);
+		res.write(email);
+		res.end();
 });
 
 
@@ -193,10 +193,10 @@ app.post('/comparing_payload', function(req, res) {
 	// ------------- db payload 가져와서 비교하기 -----------------
 	
 
+	
+	});
 	res.writeHead(200);
 	res.end(comparing_payload);
-	});
-	
 	
 });
 
