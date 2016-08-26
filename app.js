@@ -43,9 +43,44 @@ var johndoe = new PUser ({
 	product: "2"
   });
 
-johndoe.save(function (err) {
+/*johndoe.save(function (err) {
 	if (err) console.log ('Error on save!');
-});
+});*/
+
+
+app.get('/', function(req, res) {
+	var chunk = '';
+
+		//데이터를 가져옵니다.
+
+		req.on('data', function(data){
+
+		//데이터를 JSON으로 파싱합니다.
+
+		chunk = JSON.parse(data);
+
+		});
+
+		req.on('end',function(){
+
+		//파싱된 데이터를 확인합니다.
+
+		console.log("name : "+chunk.name + " , phone : "+chunk.phone);
+			
+		});
+
+
+		// 아래의 OK라는 내용이 안드로이드의 ReadBuffer를 통해
+
+		// result String으로 바뀝니다.
+
+		res.write("OK");
+
+		res.end();
+
+	});
+
+
 
 //네이버 로그인 시 회원 정보 저장
 app.post('/member_insert', function(req, res) {
@@ -132,7 +167,6 @@ app.post('/making_payload', function(req, res) {
 app.post('/comparing_payload', function(req, res) {
 	var jsonData = "";
 	var comparing_payload = false;
-	var feedback = "";
  
 	req.on('data', function (chunk) {
 		jsonData += chunk;
@@ -194,38 +228,6 @@ app.get('/member_info', function(req, res) {
 
 
 
-app.get('/', function(req, res) {
-  
-  var chunk = '';
-
-	//데이터를 가져옵니다.
-
-	req.on('data', function(data){
-
-	//데이터를 JSON으로 파싱합니다.
-
-	chunk = JSON.parse(data);
-
-	});
-
-	req.on('end',function(){
-
-	//파싱된 데이터를 확인합니다.
-
-	console.log("name : "+chunk.name + " , phone : "+chunk.phone);
-		
-	});
-
-
-	// 아래의 OK라는 내용이 안드로이드의 ReadBuffer를 통해
-
-	// result String으로 바뀝니다.
-
-	res.write("OK");
-
-	res.end();
-
-});
 
 
 
