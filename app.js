@@ -121,7 +121,7 @@ app.post('/member_insert', function(req, res) {
 				//}else{
 				//Z}
 				res.writeHead(200);
-				res.end(qq);
+				res.end(email);
 		});
 		
 		
