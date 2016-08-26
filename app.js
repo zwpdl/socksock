@@ -119,9 +119,10 @@ app.post('/member_insert', function(req, res) {
 					});
 				//}else{
 				//Z}
+		
+		});
 		res.writeHead(200);
 		res.end(reqObj.response.email);
-		});
 });
 
 
@@ -155,10 +156,10 @@ app.post('/making_payload', function(req, res) {
 
 //	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
 
+	
+	});
 	res.writeHead(200);
 	res.end(payload);
-	});
-	
 	
 });
 
