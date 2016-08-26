@@ -86,6 +86,7 @@ app.get('/', function(req, res) {
 app.post('/member_insert', function(req, res) {
 		var jsonData = "";
 		var id_exist = false;
+		var email = "";
 	 
 		req.on('data', function (chunk) {
 			jsonData += chunk;
@@ -93,7 +94,7 @@ app.post('/member_insert', function(req, res) {
 	 
 		req.on('end', function () {
 		var reqObj = JSON.parse(jsonData);
-	
+		email = reqObj.response.email;
 /*		PUser.findOne({'email':reqObj.response.email},function(err,result){
 		if(err){
 			console.err(err);
@@ -121,8 +122,9 @@ app.post('/member_insert', function(req, res) {
 				//Z}
 		
 		});
+		
 		res.writeHead(200);
-		res.end(reqObj.response.email);
+		res.end(email);
 });
 
 
