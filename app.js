@@ -95,13 +95,14 @@ app.post('/member_insert', function(req, res) {
 		req.on('end', function () {
 		var reqObj = JSON.parse(jsonData);
 		email = reqObj.response.email;
-/*		PUser.findOne({'email':reqObj.response.email},function(err,result){
+		
+		PUser.findOne({'email':reqObj.response.email},function(err,result){
 		if(err){
 			console.err(err);
 			throw err;}
-		if(!result.isempty){
-			id_exist = true;}
-		});*/
+		email = "성공";
+	
+		});
 		
 		
 	//	if(id_exist === true){
