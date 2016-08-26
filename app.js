@@ -87,7 +87,7 @@ app.post('/member_insert', function(req, res) {
 		var jsonData = "";
 		var id_exist = false;
 		var email = "";
-		var qq = "";
+		var qq = "aa";
 		PUser.findOne({email:reqObj.response.email},function(err,result){
 			if(err){
 				console.err(err);
@@ -101,10 +101,6 @@ app.post('/member_insert', function(req, res) {
 		req.on('end', function () {
 		var reqObj = JSON.parse(jsonData);
 		email = reqObj.response.email;
-		
-		
-	
-		
 		
 		
 	//	if(id_exist === true){
