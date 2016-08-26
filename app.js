@@ -54,7 +54,7 @@ app.post('/member_insert', function(req, res) {
 		req.on('end', function () {
 		var reqObj = JSON.parse(jsonData);
 	
-		PUser.findOne({'name':reqObj.response.email},function(err,result){
+		PUser.findOne({'email':reqObj.response.email},function(err,result){
 		if(err){
 			console.err(err);
 			throw err;}
@@ -71,9 +71,9 @@ app.post('/member_insert', function(req, res) {
 			gender : ""+reqObj.response.gender,
 			product : "free",
 			payload : "0"
-			
 				});
 		
+			
 				jo.save(function (err) {
 					if (err) console.log ('Error on save!');
 					});
@@ -81,7 +81,7 @@ app.post('/member_insert', function(req, res) {
 					feedback = "기존 회원임";
 				}
 		res.writeHead(200);
-		res.end(reqObj.response.email);
+		res.end(feedback);
 		});
 });
 
