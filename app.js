@@ -23,8 +23,12 @@ mongoose.connect(uristring, function (err, res) {
 
 
 var userSchema = new mongoose.Schema({
-    name: String,
-    author: String
+    email: String,
+	name: String,
+    age: String,
+    gender: String,
+    product: String,
+    payload: String
   });
 
 
@@ -35,65 +39,9 @@ var johndoe = new PUser ({
     author: 'choidongkyu'
   });
 
-function randomString() {
-var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-var string_length = 15;
-var randomstring = '';
-for (var i=0; i<string_length; i++) {
-var rnum = Math.floor(Math.random() * chars.length);
-randomstring += chars.substring(rnum,rnum+1);
-}
-return randomstring;
-}
-
-app.post('/making_payload', function(req, res) {
-	
-	var payload = randomString();
-	
-	
-	res.writeHead(200);
-	res.end(payload);
-	
-	
-});
-
-app.post('/comparing_payload', function(req, res) {
-	var jsonData = "";
-	var comparing_payload = false;
-	var feedback = "";
- 
-	req.on('data', function (chunk) {
-		jsonData += chunk;
-	});
- 
-	req.on('end', function () {
-	var reqObj = JSON.parse(jsonData);
-
-	PUser.findOne({'payload':reqObj.developerPayload},function(err,result){
-	if(err){
-		console.err(err);
-		throw err;}
-	
-	if(!result.isempty){
-		comparing_payload = true;
-	}else{
-		comparing_payload = false;
-	}
-	});
-	// ------------- db payload 가져와서 비교하기 -----------------
-	
-
-	res.writeHead(200);
-	res.end(comparing_payload);
-	});
-	
-	
-});
 
 
-
-
-
+//네이버 로그인 시 회원 정보 저장
 app.post('/member_insert', function(req, res) {
 		var jsonData = "";
 		var id_exist = false;
@@ -117,8 +65,13 @@ app.post('/member_insert', function(req, res) {
 		
 		if(id_exist === true){
 			var jo = new PUser({
-			name : ""+reqObj.response.email,
-			author : ""+reqObj.response.age
+			email : ""+reqObj.response.email,
+			age : ""+reqObj.response.age,
+			name : ""+reqObj.response.name,
+			gender : ""+reqObj.response.gender,
+			product : "free",
+			payload : "0"
+			
 				});
 		
 				jo.save(function (err) {
@@ -133,10 +86,82 @@ app.post('/member_insert', function(req, res) {
 });
 
 
-/*
-johndoe.save(function (err) {
-	if (err) console.log ('Error on save!');
-	});*/
+
+
+// payload 발급
+function randomString() {
+var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+var string_length = 15;
+var randomstring = '';
+for (var i=0; i<string_length; i++) {
+var rnum = Math.floor(Math.random() * chars.length);
+randomstring += chars.substring(rnum,rnum+1);
+}
+return randomstring;
+}
+
+
+// payload를 발급하여 member_info에 저장
+app.post('/making_payload', function(req, res) {
+	
+	var payload = randomString();
+	
+	req.on('data', function (chunk) {
+		jsonData += chunk;
+	});
+ 
+	req.on('end', function () {
+	var reqObj = JSON.parse(jsonData);
+	var email = reqObj.email;
+
+	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
+
+	res.writeHead(200);
+	res.end(payload);
+	});
+	
+	
+});
+
+
+// google에서 결제 후 받은 purchase data의 payload와 DB의 payload 비교 후 일치하면  DB에 상품 타입 업데이트
+app.post('/comparing_payload', function(req, res) {
+	var jsonData = "";
+	var comparing_payload = false;
+	var feedback = "";
+ 
+	req.on('data', function (chunk) {
+		jsonData += chunk;
+	});
+ 
+	req.on('end', function () {
+	var reqObj = JSON.parse(jsonData);
+
+	PUser.findOne({'payload':reqObj.developerPayload},function(err,result){
+	if(err){
+		console.err(err);
+		throw err;}
+	
+	if(!result.isempty){
+		comparing_payload = true;
+		PUser.where('payload', reqObj.developerPayload).update({$set: {product: 'product_no.1'}}, function (err, count) {});
+	}else{
+		comparing_payload = false;
+	}
+	});
+	// ------------- db payload 가져와서 비교하기 -----------------
+	
+
+	res.writeHead(200);
+	res.end(comparing_payload);
+	});
+	
+	
+});
+
+
+
+
 
 
 	PUser.find(function(err, docs) {
