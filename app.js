@@ -27,19 +27,25 @@ var userSchema = new mongoose.Schema({
 	name: String,
     age: String,
     gender: String,
-    product: String,
-    payload: String
+    payload: String,
+    product: String
   });
 
 
 var PUser = mongoose.model('member_info', userSchema);
 
 var johndoe = new PUser ({
-    name: '최동규',
-    author: 'choidongkyu'
+	email : "1",
+	age : "2",
+	name : "3",
+	gender : "4",
+	payload : "0",
+	product: "2"
   });
 
-
+/*johndoe.save(function (err) {
+	if (err) console.log ('Error on save!');
+});*/
 
 //네이버 로그인 시 회원 정보 저장
 app.post('/member_insert', function(req, res) {
@@ -63,14 +69,15 @@ app.post('/member_insert', function(req, res) {
 			feedback = "회원 정보 저장";}
 		});
 		
+		
 		if(id_exist === true){
 			var jo = new PUser({
 			email : ""+reqObj.response.email,
 			age : ""+reqObj.response.age,
 			name : ""+reqObj.response.name,
 			gender : ""+reqObj.response.gender,
-			product : "free",
-			payload : "0"
+			payload : "0",
+			product : "free"
 				});
 		
 			
