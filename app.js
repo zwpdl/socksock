@@ -181,10 +181,11 @@ app.post('/making_payload', function(req, res) {
 	
 	req.on('data', function (chunk) {
 		jsonData += chunk;
+		reqObj = JSon.parse(chunk);
 	});
  
 	req.on('end', function () {
-	reqObj = JSON.parse(jsonData);
+	//reqObj = JSON.parse(jsonData);
 	/*var email = "zwpdl@naver.com";
 
 	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});*/
