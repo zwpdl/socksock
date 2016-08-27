@@ -151,7 +151,8 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
-	
+	// payload DB에 업데이트
+	PUser.update( { name: "최동규" }, { $set: { payload: payload } } );
 	/* 삭제 코드는 아주 잘 됨
 	 * PUser.remove({email:'zwpdl@naver.com'}, function(err, output) {
 		
@@ -167,15 +168,14 @@ app.post('/making_payload', function(req, res) {
  
 	req.on('end', function () {
 	var reqObj = JSON.parse(jsonData);
-	var email = "zwpdl@naver.com";
+	/*var email = "zwpdl@naver.com";
 
-	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
-
+	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});*/
+	
 	
 	});
 	
-	// payload DB에 업데이트
-	PUser.update( { name: "최동규" }, { $set: { payload: payload } } );
+	
 	
 	res.writeHead(200);
 	res.end(payload);
