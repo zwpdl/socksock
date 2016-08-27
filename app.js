@@ -104,7 +104,7 @@ app.post('/member_insert', function(req, res) {
 				console.err(err);
 				throw err;}
 			
-			email = "성공";
+			email = result.name;
 		});
 		
 		
