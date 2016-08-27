@@ -151,6 +151,13 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
+	PUser.remove({email:'zwpdl@naver.com'}, function(err, output) {
+		
+		if(err){
+			payload = "err";
+		}
+		
+	});
 	
 	req.on('data', function (chunk) {
 		jsonData += chunk;
