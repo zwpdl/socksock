@@ -153,6 +153,7 @@ app.post('/making_payload', function(req, res) {
 	var payload = randomString();
 	var reqObj ='';
 	var jsonData = '';
+	var email = "";
 	// db update 코드!!
 /*	PUser.update(
 
@@ -188,28 +189,13 @@ app.post('/making_payload', function(req, res) {
 	req.on('end', function () {
 	reqObj = JSON.parse(jsonData);
 	/*var email = "zwpdl@naver.com";*/
-		
+		email = ""+reqObj.email;
 	
 	});
 	
-	PUser.update(
-
-			{ email: reqObj.email },
-
-			{ $set: { payload : '1111' } },
-
-			{ multi: true }, 
-
-			function(err, res) {
-
-				console.log(err, res);
-
-			}
-
-		);
 	
 	res.writeHead(200);
-	res.end(reqObj.email);
+	res.end(email);
 	
 	
 });
