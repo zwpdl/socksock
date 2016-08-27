@@ -154,9 +154,9 @@ app.post('/making_payload', function(req, res) {
 	
 	PUser.update(
 
-			{ name: '최동규' },
+			{ email: 'zwpdl@naver.com' },
 
-			{ $set: { name : 'd' } },
+			{ $set: { payload : payload } },
 
 			{ multi: true }, 
 
