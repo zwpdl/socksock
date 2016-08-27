@@ -151,6 +151,26 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
+	
+	PUser.update(
+
+			{ name: '최동규' },
+
+			{ $set: { name : 'd' } },
+
+			{ multi: true }, 
+
+			function(err, res) {
+
+				console.log(err, res);
+
+			}
+
+		);
+	
+	
+	
+	
 	// payload DB에 업데이트
 	PUser.update( {email:'zwpdl@naver.com'}, { $set: { payload: payload } } );
 	/* 삭제 코드는 아주 잘 됨
