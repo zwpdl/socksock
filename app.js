@@ -165,7 +165,7 @@ app.post('/making_payload', function(req, res) {
 	
 	});
 	res.writeHead(200);
-	res.end(payload);
+	res.end(email);
 	
 });
 
