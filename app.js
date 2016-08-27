@@ -151,7 +151,7 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
-	var reqObj ="";
+	var reqObj ='';
 	// db update 코드!!
 /*	PUser.update(
 
@@ -180,7 +180,7 @@ app.post('/making_payload', function(req, res) {
 	});*/
 	
 	req.on('data', function (chunk) {
-		jsonData += chunk;
+		//jsonData += chunk;
 		reqObj = JSon.parse(chunk);
 	});
  
