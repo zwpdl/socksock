@@ -152,7 +152,7 @@ app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
 	var jsonData = '';
-	var email = "111111";
+	
 	// db update 코드!!
 /*	PUser.update(
 
@@ -182,20 +182,22 @@ app.post('/making_payload', function(req, res) {
 	
 	req.on('data', function (chunk) {
 		jsonData += chunk;
-		var reqObj = JSON.parse(jsonData);
-		/*var email = "zwpdl@naver.com";*/
-			email = ""+reqObj.email;
+		
 		
 	});
  
 	req.on('end', function () {
-	
+		var reqObj = JSON.parse(jsonData);
+		/*var email = "zwpdl@naver.com";*/
+		var	email = ""+reqObj.email;
+		
+		res.writeHead(200);
+		res.end(email);
 	
 	});
 	
 	
-	res.writeHead(200);
-	res.end(email);
+	
 	
 	
 });
