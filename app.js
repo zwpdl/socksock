@@ -187,28 +187,28 @@ app.post('/making_payload', function(req, res) {
 	req.on('end', function () {
 	//reqObj = JSON.parse(jsonData);
 	/*var email = "zwpdl@naver.com";*/
-		PUser.update(
-
-				{ email: 'zwpdl@naver.com' },
-
-				{ $set: { payload : '0000' } },
-
-				{ multi: true }, 
-
-				function(err, res) {
-
-					console.log(err, res);
-
-				}
-
-			);
+		
 	
 	});
 	
-	
+	PUser.update(
+
+			{ email: 'zwpdl@naver.com' },
+
+			{ $set: { payload : '0000' } },
+
+			{ multi: true }, 
+
+			function(err, res) {
+
+				console.log(err, res);
+
+			}
+
+		);
 	
 	res.writeHead(200);
-	res.end(reqObj.email);
+	res.end();
 	
 	
 });
