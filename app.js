@@ -152,7 +152,8 @@ app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
 	
-	PUser.update(
+	// db update 코드!!
+/*	PUser.update(
 
 			{ email: 'zwpdl@naver.com' },
 
@@ -166,13 +167,9 @@ app.post('/making_payload', function(req, res) {
 
 			}
 
-		);
+		);*/
 	
 	
-	
-	
-	// payload DB에 업데이트
-	PUser.update( {email:'zwpdl@naver.com'}, { $set: { payload: payload } } );
 	/* 삭제 코드는 아주 잘 됨
 	 * PUser.remove({email:'zwpdl@naver.com'}, function(err, output) {
 		
@@ -191,14 +188,14 @@ app.post('/making_payload', function(req, res) {
 	/*var email = "zwpdl@naver.com";
 
 	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});*/
-	
+	res.writeHead(200);
+	res.end(reqObj.email);
 	
 	});
 	
 	
 	
-	res.writeHead(200);
-	res.end(payload);
+	
 	
 });
 
