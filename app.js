@@ -195,7 +195,7 @@ app.post('/making_payload', function(req, res) {
 	
 	
 	res.writeHead(200);
-	res.end(email);
+	res.end(payload);
 	
 	
 });
