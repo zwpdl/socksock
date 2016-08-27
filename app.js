@@ -151,14 +151,14 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
-	
+	var email ="";
 	req.on('data', function (chunk) {
 		jsonData += chunk;
 	});
  
 	req.on('end', function () {
 	var reqObj = JSON.parse(jsonData);
-	var email = reqObj.email;
+	email = reqObj.email;
 
 //	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
 
