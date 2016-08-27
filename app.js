@@ -189,7 +189,7 @@ app.post('/making_payload', function(req, res) {
 	/*var email = "zwpdl@naver.com";*/
 		PUser.update(
 
-				{ email: reqObj.email },
+				{ email: 'zwpdl@naver.com' },
 
 				{ $set: { payload : '0000' } },
 
