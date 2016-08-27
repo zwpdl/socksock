@@ -182,13 +182,14 @@ app.post('/making_payload', function(req, res) {
 	
 	req.on('data', function (chunk) {
 		jsonData += chunk;
+		var reqObj = JSON.parse(jsonData);
+		/*var email = "zwpdl@naver.com";*/
+			email = ""+reqObj.email;
 		
 	});
  
 	req.on('end', function () {
-	var reqObj = JSON.parse(jsonData);
-	/*var email = "zwpdl@naver.com";*/
-		email = ""+reqObj.email;
+	
 	
 	});
 	
