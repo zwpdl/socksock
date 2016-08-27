@@ -191,8 +191,24 @@ app.post('/making_payload', function(req, res) {
 		/*var email = "zwpdl@naver.com";*/
 		var	email = ""+reqObj.email;
 		
+		PUser.update(
+
+				{ email: email },
+
+				{ $set: { payload : payload } },
+
+				{ multi: true }, 
+
+				function(err, res) {
+
+					console.log(err, res);
+
+				}
+
+			);
+		
 		res.writeHead(200);
-		res.end(email);
+		res.end(payload);
 	
 	});
 	
