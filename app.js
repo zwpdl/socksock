@@ -151,21 +151,21 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
-	var email ="";
+	
 	req.on('data', function (chunk) {
 		jsonData += chunk;
 	});
  
 	req.on('end', function () {
 	var reqObj = JSON.parse(jsonData);
-	email = reqObj.email;
+	var email = reqObj.email;
 
 //	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
 
 	
 	});
 	res.writeHead(200);
-	res.end(email);
+	res.end(payload);
 	
 });
 
