@@ -153,7 +153,7 @@ app.post('/making_payload', function(req, res) {
 	var payload = randomString();
 	var reqObj ='';
 	var jsonData = '';
-	var email = "";
+	var email = "111111";
 	// db update 코드!!
 /*	PUser.update(
 
@@ -195,7 +195,7 @@ app.post('/making_payload', function(req, res) {
 	
 	
 	res.writeHead(200);
-	res.end(payload);
+	res.end(email);
 	
 	
 });
