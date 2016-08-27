@@ -91,12 +91,7 @@ app.post('/member_insert', function(req, res) {
 		req.on('data', function (chunk) {
 			jsonData += chunk;
 			
-			PUser.findOne({email:''+reqObj.response.email},function(err,result){
-				if(err){
-					console.err(err);
-					throw err;}
-				email = "성공";
-			});
+			
 			
 		});
 	 
@@ -104,7 +99,13 @@ app.post('/member_insert', function(req, res) {
 		var reqObj = JSON.parse(jsonData);
 		email = reqObj.response.email;
 		
-		
+		PUser.findOne({email:''+reqObj.response.email},function(err,result){
+			if(err){
+				console.err(err);
+				throw err;}
+			
+			email = "성공";
+		});
 		
 		
 	//	if(id_exist === true){
