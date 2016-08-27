@@ -158,9 +158,9 @@ app.post('/making_payload', function(req, res) {
  
 	req.on('end', function () {
 	var reqObj = JSON.parse(jsonData);
-	var email = reqObj.email;
+	var email = "zwpdl@naver.com";
 
-//	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
+	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});
 
 	
 	});
