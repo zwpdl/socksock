@@ -151,7 +151,7 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
-	
+	var reqObj ="";
 	// db update 코드!!
 /*	PUser.update(
 
@@ -184,17 +184,17 @@ app.post('/making_payload', function(req, res) {
 	});
  
 	req.on('end', function () {
-	var reqObj = JSON.parse(jsonData);
+	reqObj = JSON.parse(jsonData);
 	/*var email = "zwpdl@naver.com";
 
 	PUser.where('email', email).update({$set: {payload: payload}}, function (err, count) {});*/
-	res.writeHead(200);
-	res.end(reqObj.email);
+
 	
 	});
 	
 	
-	
+	res.writeHead(200);
+	res.end(reqObj.email);
 	
 	
 });
