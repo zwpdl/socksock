@@ -97,7 +97,7 @@ app.post('/member_insert', function(req, res) {
 		email = reqObj.response.email;
 		
 		
-		PUser.findOne({email:reqObj.response.email},function(err,result){
+		PUser.findOne({email:''+reqObj.response.email},function(err,result){
 			if(err){
 				console.err(err);
 				throw err;}
