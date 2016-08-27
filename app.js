@@ -151,7 +151,6 @@ return randomstring;
 app.post('/making_payload', function(req, res) {
 	
 	var payload = randomString();
-	var reqObj ='';
 	var jsonData = '';
 	var email = "111111";
 	// db update 코드!!
@@ -187,7 +186,7 @@ app.post('/making_payload', function(req, res) {
 	});
  
 	req.on('end', function () {
-	reqObj = JSON.parse(jsonData);
+	var reqObj = JSON.parse(jsonData);
 	/*var email = "zwpdl@naver.com";*/
 		email = ""+reqObj.email;
 	
